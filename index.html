@@ -8,24 +8,29 @@
       <link rel="stylesheet" href="nm/gaintime/css/gaintime.min.css" media ="screen" title="no title">
       <link rel="stylesheet" href="assets/css/style.css" media ="screen" title="no title">
       <meta name="description" content="Upis enables you to quickly create GitLab and GitHub issues. Submit multiple issues to your git project! It's so easy...">
+      <link rel="icon" type="image/png" href="assets/img/u.png">
     </head>
     <body>
       <section class="text-center">
         <div class="medium center">
-          <div class="text-right">
-            <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/upis/upis.github.io" data-icon="octicon-star" data-size="large" aria-label="Star upis/upis.github.io on GitHub">Star</a>
-            <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/upis/upis.github.io/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork upis/upis.github.io on GitHub">Fork</a>
-            <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/jprodrigues70" data-size="large" aria-label="Follow @jprodrigues70 on GitHub">Follow @jprodrigues70</a>
+          <div class="">
+            <div class="flex-box" style="align-items: center">
+              <div class="col text-left">
+                <img src="assets/img/upis.png" alt="" style="width: 100px">
+              </div>
+              <div class="col text-right">
+                <a class="github-button" href="https://github.com/upis/upis.github.io" data-icon="octicon-star" data-size="large" aria-label="Star upis/upis.github.io on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/upis/upis.github.io/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork upis/upis.github.io on GitHub">Fork</a>
+                <a class="github-button" href="https://github.com/jprodrigues70" data-size="large" aria-label="Follow @jprodrigues70 on GitHub">Follow @jprodrigues70</a>
+              </div>
+            </div>
           </div>
-          <h1>Submit multiple issues to your git project</h1>
+          <h1>Submit multiple issues to your GitLab or GitHub project</h1>
           <p>You will need use our markup style but it's so easy...
             Well... you will use "- " for issue title, "> " for issue description and "# " for issue labels (multiple labels will be separated by comma). Eg:</p>
             <div class="code-block cmd text-left">
-              <h2>- As user i want to logon on system</h2>
-              <p>> The user will logon with email and password</p>
+              <h2>- As user i want to login on system</h2>
+              <p>> The user will login with email and password</p>
               <p><b># user,essential</b> </p>
             </div>
             <div class="inform warning">
@@ -85,88 +90,10 @@
           </div>
         </div>
       </footer>
-      <script type="text/javascript" src="nm/gaintime/js/gaintime.min.js"></script>
+      <!-- <script type="text/javascript" src="nm/gaintime/js/gaintime.min.js"></script> -->
       <script src="assets/js/gt-helper.js" charset="utf-8"></script>
       <script src="assets/js/restful.js" charset="utf-8"></script>
-      <script type="text/javascript">
-        gt("#generate").addEventListener("click", function() {
-          var project = gt("#project-url").value;
-          var token = gt("#private-token").value;
-          var issues = gt("#content").value.split("- ");
-          var url = ""
-          mountAndSend(issues, 0);
-
-          function toGitLab(project, issue, coment, labels) {
-            url = "https://gitlab.com/api/v4/projects/"
-            project = project.replace("/", "%2F")
-            return {
-              "id": project,
-              "title": issue,
-              "description": coment,
-              "labels": labels
-            };
-          }
-
-          function toGitHub(issue, coment, labels) {
-            url = "https://api.github.com/repos/";
-            token = null;
-            labels = (labels)? labels.split(",") : [];
-            return {
-              "title": issue,
-              "body": coment,
-              "labels": labels,
-              "access_token": gt("#private-token").value
-            }
-          }
-
-          function mountAndSend(issues, i) {
-            if (i < issues.length) {
-              var issue = issues[i];
-              if (issue && issue != "" && issue != "%0A") {
-                var content = issue.split("> ")
-                var issue = content[0]
-                var coment = null;
-                var labels = null;
-                if (content[1]) {
-                  var subcontent = content[1];
-                  var finish = subcontent.split("# ");
-                  var coment = finish[0];
-                  if (finish[1]) labels = finish[1].trim();
-                } else {
-                  content = issue.split("# ");
-                  issue = content[0];
-                  if (content[1]) labels = content[1].trim();
-                }
-                if (!coment) coment = "";
-                if (!labels) labels = "";
-
-
-                if (encodeURIComponent(issue)!="%0A") {
-                  var dt = (gt("#platform").value == "gitlab")? toGitLab(project, issue, coment, labels) : toGitHub(issue, coment, labels)
-                  console.log(dt)
-                  if (gt("#platform").value == "gitlab") project = project.replace("/", "%2F")
-                  _post(
-                    url + project + "/issues",
-                    dt,
-                    function(data) {
-                      mountAndSend(issues, i + 1)
-                    },
-                    function(data) { console.error(data) },
-                    token
-                  )
-                } else {
-                  mountAndSend(issues, i + 1)
-                }
-              } else {
-                mountAndSend(issues, i + 1)
-              }
-
-            }
-          }
-
-        })
-      </script>
-      <!-- Place this tag in your head or just before your close body tag. -->
+      <script src="assets/js/upis.js" charset="utf-8"></script>
       <script async defer src="https://buttons.github.io/buttons.js"></script>
     </body>
   </html>
