@@ -40,3 +40,17 @@ This input will generate two issues:
   - #user #essential #file (labels)
 
 ### The space after the character (-, # or >) is fundamental!! Don't forget!
+
+``` note
+We do not store any of your data! If you want, check the code.
+```
+
+### Compatibility
+ - GitLab
+ - GitHub
+ 
+### Author
+[@jprodrigues70](https://github.com/jprodrigues70)
+
+### Licence
+[GNU General Public License v3.0.](https://choosealicense.com/licenses/gpl-3.0/)
