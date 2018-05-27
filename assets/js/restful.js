@@ -64,8 +64,8 @@ function update_user() {
  * @param       {callback} fail    function to be executed on fail
  * @return      {void}
  */
-function _post(url, data, success, fail, token) {
-  Restful('POST', url, data, success, fail, null, null, token);
+function _post(url, data, success, fail, token, header) {
+  Restful('POST', url, data, success, fail, null, null, token, header);
 }
 
 /**
@@ -91,7 +91,7 @@ function _get(url, data, success, fail, controlloader) {
  * @param       {callback} fail    function to be executed on fail
  * @return      {void}
  */
-function Restful(method, url, data, success, fail, controlloader, noloader, token) {
+function Restful(method, url, data, success, fail, controlloader, noloader, token, header) {
     var http = ajaxCall(method, url, data, noloader, token);
 
     http.onreadystatechange = function() {
@@ -120,7 +120,7 @@ function Restful(method, url, data, success, fail, controlloader, noloader, toke
  * @param  {object} data           info to be passed on request
  * @return {XMLHttpRequest}        request results
  */
-function ajaxCall(method, url, data, noloader, token) {
+function ajaxCall(method, url, data, noloader, token, header) {
     if (!noloader) {
         _loader.show();
     }
@@ -130,7 +130,7 @@ function ajaxCall(method, url, data, noloader, token) {
     }).join('&')
     if (token)  {
       http.open(method, url + "?" + params, true);
-      http.setRequestHeader("PRIVATE-TOKEN", token);
+      if (header) http.setRequestHeader("PRIVATE-TOKEN", token);
       http.send();
     } else {
       http.open(method, url + "?access_token=" + data.access_token, true);
