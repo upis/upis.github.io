@@ -204,10 +204,14 @@ function ajaxCall(method, url, data, noloader, token) {
     var params = Object.keys(data).map(function(k) {
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
     }).join('&')
-    console.log(url);
-    http.open(method, url + "?" + params, true);
-    if (token) http.setRequestHeader("PRIVATE-TOKEN", token);
-    http.send();
+    if (token)  {
+      http.open(method, url + "?" + params, true);
+      http.setRequestHeader("PRIVATE-TOKEN", token);
+      http.send();
+    } else {
+      http.open(method, url + "?access_token=" + data.access_token, true);
+      http.send(JSON.stringify(data));
+    }
     // console.log(JSON.stringify(data))
     return http;
 }
