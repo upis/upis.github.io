@@ -49,7 +49,7 @@
         </div>
         <div class="gt-form center medium">
           <label for="platform">Platform</label>
-          <select class="" name="platform" id="platform" autocomplete="off">
+          <select class="" name="platform" id="platform">
             <option selected value="gitlab">GitLab</option>
             <option value="github">GitHub</option>
           </select>
@@ -109,10 +109,11 @@
           function toGitHub(issue, coment, labels) {
             url = "https://api.github.com/repos/";
             token = null;
+            labels = (labels)? labels.split(",") : [];
             return {
               "title": issue,
               "body": coment,
-              "labels": labels.split(","),
+              "labels": labels,
               "access_token": gt("#private-token").value
             }
           }
@@ -141,6 +142,7 @@
 
                 if (encodeURIComponent(issue)!="%0A") {
                   var dt = (gt("#platform").value == "gitlab")? toGitLab(project, issue, coment, labels) : toGitHub(issue, coment, labels)
+                  console.log(dt)
                   if (gt("#platform").value == "gitlab") project = project.replace("/", "%2F")
                   _post(
                     url + project + "/issues",
@@ -154,8 +156,6 @@
                 } else {
                   mountAndSend(issues, i + 1)
                 }
-
-
               } else {
                 mountAndSend(issues, i + 1)
               }
