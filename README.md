@@ -45,12 +45,12 @@ This input will generate two issues:
 We do not store any of your data! If you want, check the code.
 ```
 
-# Support
- - Gitlab
- - Github
+### Compatibility
+ - GitLab
+ - GitHub
  
-# Author
+### Author
 [@jprodrigues70](https://github.com/jprodrigues70)
 
-# Licence
+### Licence
 [GNU General Public License v3.0.](https://choosealicense.com/licenses/gpl-3.0/)
