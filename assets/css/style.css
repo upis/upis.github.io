@@ -1,71 +1,3 @@
-.card-body p {
-  margin: 0; }
-
-.painel-top-menu {
-  height: 50px; }
-  .painel-top-menu li a {
-    padding: 4px 8px; }
-
-.lateral-menu {
-  width: 200px;
-  left: 0;
-  height: calc(100% - 50px);
-  position: fixed;
-  padding: 20px; }
-@media(max-width: 768px) {
-  .lateral-menu {
-    width: 40px;
-    padding: 3px; }
-    .lateral-menu .lm-item-text {
-      display: none; } }
-  .lateral-menu nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-    .lateral-menu nav ul li {
-      transition: all 0.2s;
-      border-radius: 3px;
-      cursor: pointer;
-      padding: 5px; }
-      .lateral-menu nav ul li:not(.no-hover):hover a {
-        color: #333; }
-      .lateral-menu nav ul li:not(.no-hover):hover {
-        background-color: #FFF; }
-@media(max-width: 768px) {
-  .lateral-menu nav ul li > .false-title {
-    display: none; }
-  .lateral-menu nav ul li.no-hover {
-    padding: 0; } }
-      .lateral-menu nav ul li a {
-        color: #FFF;
-        display: block;
-        text-decoration: none; }
-      .lateral-menu nav ul li ul {
-        margin-left: 20px;
-        margin-top: 5px; }
-@media(max-width: 768px) {
-  .lateral-menu nav ul li ul {
-    margin-left: 0; } }
-      .lateral-menu nav ul li i {
-        width: 20px;
-        text-align: center; }
-
-.lateral-content {
-  width: calc(100% - 200px);
-  right: 0;
-  overflow: auto;
-  height: calc(100% - 50px);
-  position: fixed;
-  padding-right: 5%; }
-@media(max-width: 768px) {
-  .lateral-content {
-    width: calc(100% - 40px); } }
-  .lateral-content > section {
-    padding: 20px 0px 20px 20px; }
-
-.top-bar h1 {
-  font-size: 21px; }
-
 /*! Load Awesome v1.1.0 (http://github.danielcardoso.net/load-awesome/) Copyright 2015 Daniel Cardoso <@DanielCardoso> Licensed under MIT */
 .la-ball-grid-beat, .la-ball-grid-beat > div {
   position: relative;
@@ -251,42 +183,12 @@
     opacity: 0.35; }
   100% {
     opacity: 1; } }
+
 .mt-50 {
   margin-top: 50px; }
-
-.pagination {
-  display: inline-flex;
-  margin: 15px auto;
-  list-style: none;
-  padding: 0; }
-  .pagination > * {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    margin: 0;
-    margin-left: -1px; }
-    .pagination > *:hover {
-      background-color: #e6e6e6e6; }
-    .pagination > *.active {
-      background-color: #d1d5da; }
-    .pagination > *:first-child {
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px; }
-    .pagination > *:last-child {
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px; }
-  .pagination a, .pagination span {
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    height: 100%;
-    width: 100%;
-    font-size: 1.2em; }
-  .pagination span:not([disabled]) {
-    cursor: pointer; }
 
 .detail {
   font-weight: bold; }
 
 #platform {
   min-height: 31px; }
-
-/*# sourceMappingURL=style.css.map */
