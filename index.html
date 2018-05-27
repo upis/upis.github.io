@@ -1,0 +1,125 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>UpIs</title>
+      <link rel="stylesheet" href="nm/gaintime/css/gaintime.min.css" media ="screen" title="no title">
+      <link rel="stylesheet" href="assets/css/style.css" media ="screen" title="no title">
+    </head>
+    <body>
+      <section class="text-center">
+        <div class="medium center">
+          <h1>Submit multiple issues to your git project</h1>
+          <p>you will need use our markup style but it's so easy...
+            Well... you will use "- " for issue title, "> " for issue description and "# " for issue labels (multiple labels will be separated by comma). Eg:</p>
+            <div class="code-block cmd text-left">
+              <h2>- As user i want to logon on system</h2>
+              <p>> The user will logon with email and password</p>
+              <p><b># user,essential</b> </p>
+            </div>
+            <div class="inform warning">
+              <p>The space after the character (-, # or >) is fundamental!! Don't forget!</p>
+            </div>
+        </div>
+      </section>
+      <section>
+        <div id="loader" class="la-ball-grid-beat la-dark center la-2x mt-50 hidden">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="gt-form center medium">
+          <label for="project-url">
+            Project URL
+          </label>
+          <input id="project-url" type="text" name="" value="">
+          <label for="private-token">
+            API TOKEN
+          </label>
+          <input id="private-token" type="text" name="" value="">
+          <label for="content">CONTENT</label>
+          <textarea id="content" name="name" rows="22" cols="80"></textarea>
+          <button class="btn success full" type="button" name="button" id="generate">submit</button>
+        </div>
+      </section>
+      <footer class="dark">
+        <div class="flex-box row center medium">
+          <div class="xs-12 sm-4">
+            <h2>Upis</h2>
+            <p>Designed and built by <a href="https://github.com/jprodrigues70" target="_blank">@jprodrigues70</a></p>
+          </div>
+          <div class="xs-12 sm-4">
+            <h2>Contribute</h2>
+            <p><a href="https://github.com/upis.github.io" target="_blank">GitHub</a>!</p>
+          </div>
+          <div class="xs-12 sm-4">
+            <p>This website is made with <a href="https://gaintime.github.io">GainTime Framework</a>.</p>
+            <p>This project is licensed under the <a href="https://choosealicense.com/licenses/gpl-3.0/">GNU General Public License v3.0.</a></p>
+          </div>
+        </div>
+      </footer>
+      <script type="text/javascript" src="nm/gaintime/js/gaintime.min.js"></script>
+      <script src="assets/js/gt-helper.js" charset="utf-8"></script>
+      <script src="assets/js/restful.js" charset="utf-8"></script>
+      <script type="text/javascript">
+        gt("#generate").addEventListener("click", function() {
+          var project = gt("#project-url").value.replace("/", "%2F");
+          var token = gt("#private-token").value;
+          var issues = gt("#content").value.split("- ");
+
+          mountAndSend(issues, 0);
+
+          function mountAndSend(issues, i) {
+            if (i < issues.length) {
+              var issue = issues[i];
+              if (issue && issue != "" && issue != "%0A") {
+                console.log(issues, i);
+                var content = issue.split("> ")
+                var issue = content[0]
+                var coment = null;
+                var labels = null;
+                if (content[1]) {
+                  var subcontent = content[1];
+                  var finish = subcontent.split("# ");
+                  var coment = finish[0];
+                  if (finish[1]) labels = finish[1];
+                }
+                if (!coment) coment = "";
+                if (!labels) labels = "";
+                if (encodeURIComponent(issue)!="%0A") {
+                  _post(
+                    "https://gitlab.com/api/v4/projects/" + project + "/issues",
+                    {
+                      "id": project,
+                      "title": issue,
+                      "description": coment,
+                      "labels": labels
+                    },
+                    function(data) {
+                      mountAndSend(issues, i + 1)
+                    },
+                    function(data) { console.error(data) },
+                    token
+                  )
+                } else {
+                  mountAndSend(issues, i + 1)
+                }
+              } else {
+                mountAndSend(issues, i + 1)
+              }
+
+            }
+          }
+
+        })
+      </script>
+    </body>
+  </html>

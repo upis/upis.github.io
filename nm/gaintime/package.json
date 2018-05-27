@@ -1,0 +1,53 @@
+{
+  "_from": "gaintime",
+  "_id": "gaintime@3.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-1cIREBWHLvD4n/bUoU1N+iOvoxO4mi1weZRHGK8STF+vIFW2QcyXR3sksjwGkIhjRv9Avhaqccj2yf27IGkV8g==",
+  "_location": "/gaintime",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "gaintime",
+    "name": "gaintime",
+    "escapedName": "gaintime",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/gaintime/-/gaintime-3.0.0.tgz",
+  "_shasum": "e7a9f26fc54320db4bc0be5bb060333cfd763a56",
+  "_spec": "gaintime",
+  "_where": "/var/www/html/micre8",
+  "author": {
+    "name": "JP Rodrigues 70jprodrigues@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/GainTime/gaintime-factory/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "GainTime é um framework de HTML, CSS e JS para desenvolvimento de projetos responsivos, focado na simplicidade.",
+  "homepage": "https://gaintime.github.io",
+  "keywords": [
+    "css",
+    "js",
+    "sass",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
+  ],
+  "license": "MIT",
+  "main": "css/gaintime.min.css",
+  "name": "gaintime",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GainTime/gaintime.git"
+  },
+  "version": "3.0.0"
+}
