@@ -11,7 +11,7 @@
   color: #fff; }
 
 .la-ball-grid-beat.la-dark {
-  color: #333; }
+  color: #e24329; }
 
 .la-ball-grid-beat > div {
   display: inline-block;
@@ -192,3 +192,11 @@
 
 #platform {
   min-height: 31px; }
+
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #3333;
+  left: 0;
+  top: 0; }
