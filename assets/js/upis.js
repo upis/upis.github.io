@@ -5,64 +5,80 @@ gt("#generate").addEventListener("click", function() {
   var url = ""
   mountAndSend(issues, 0);
 
-  function toGitLab(project, issue, coment, labels) {
+  function toGitLab(project, issue, description, labels, weight) {
     url = "https://gitlab.com/api/v4/projects/"
     project = project.replace("/", "%2F")
-    return {
+    weight = (weight)? parseInt(weight): null;
+    var obj =  {
       "id": project,
       "title": issue,
-      "description": coment,
-      "labels": labels
+      "description": description,
+      "labels": labels,
+      "weight": weight
     };
+
+    if (!weight) delete obj.weight
+    return obj;
   }
 
-  function toGitHub(issue, coment, labels) {
+  function toGitHub(issue, description, labels) {
     url = "https://api.github.com/repos/";
     token = null;
     labels = (labels)? labels.split(",") : [];
     return {
       "title": issue,
-      "body": coment,
+      "body": description,
       "labels": labels,
       "access_token": gt("#private-token").value
     }
   }
 
+  function callPlatform(platform, project, issue, description, labels, weight) {
+    var result = {};
+
+    switch (platform) {
+      case "gitlab":
+        result = toGitLab(project, issue, description, labels, weight);
+        break;
+      case "github":
+        result = toGitHub(issue, description, labels)
+        break;
+    }
+    return result;
+  }
+
   function mountAndSend(issues, i) {
     if (i < issues.length) {
       var issue = issues[i];
-      if (issue && issue != "" && issue != "%0A") {
-        var content = issue.split("> ")
-        var issue = content[0]
-        var coment = null;
-        var labels = null;
-        if (content[1]) {
-          var subcontent = content[1];
-          var finish = subcontent.split("# ");
-          var coment = finish[0];
-          if (finish[1]) labels = finish[1].trim();
-        } else {
-          content = issue.split("# ");
-          issue = content[0];
-          if (content[1]) labels = content[1].trim();
-        }
-        if (!coment) coment = "";
-        if (!labels) labels = "";
+      var description = "";
+      var labels = "";
+      var weight = "";
+      var tmp = null;
 
+      if (issue && issue != "" && encodeURIComponent(issue) != "%0A") {
 
-        if (encodeURIComponent(issue)!="%0A") {
-          var dt = (gt("#platform").value == "gitlab")? toGitLab(project, issue, coment, labels) : toGitHub(issue, coment, labels)
-          console.log(dt)
-          if (gt("#platform").value == "gitlab") project = project.replace("/", "%2F")
+        tmp = issue.split("$w ");
+        if (tmp[1]) weight = tmp[1].trim();
+
+        tmp = tmp[0].split("# ");
+        if (tmp[1]) labels = tmp[1].trim();
+
+        tmp = tmp[0].split("> ");
+        if (tmp[1]) description = tmp[1].trim();
+
+        issue = tmp[0].trim();
+
+        if (encodeURIComponent(issue) != "%0A") {
+          var platform = gt("#platform").value;
+          if (platform == "gitlab") project = project.replace("/", "%2F")
+          var obj = callPlatform(platform, project, issue, description, labels, weight);
           _post(
             url + project + "/issues",
-            dt,
-            function(data) {
-              mountAndSend(issues, i + 1)
-            },
+            obj,
+            function(data) { mountAndSend(issues, i + 1) },
             function(data) { console.error(data) },
             token
-          )
+          );
         } else {
           mountAndSend(issues, i + 1)
         }
