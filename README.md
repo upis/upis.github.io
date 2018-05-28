@@ -39,7 +39,9 @@ This input will generate two issues:
   - The user will upload profile picture and update personal data (description)
   - #user #essential #file (labels)
 
-### The space after the character (-, # or >) is fundamental!! Don't forget!
+You can use "$w " for issue weight (**GitLab ONLY**)
+
+### The space after the character (-, #, > or $w) is fundamental!! Don't forget!
 
 ``` note
 We do not store any of your data! If you want, check the code.
@@ -48,7 +50,7 @@ We do not store any of your data! If you want, check the code.
 ### Compatibility
  - GitLab
  - GitHub
- 
+
 ### Author
 [@jprodrigues70](https://github.com/jprodrigues70)
 
