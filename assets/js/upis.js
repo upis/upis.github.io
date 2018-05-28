@@ -70,7 +70,7 @@ gt("#generate").addEventListener("click", function() {
 
         if (encodeURIComponent(issue) != "%0A") {
           var platform = gt("#platform").value;
-          if (platform == "gitlab") project = project.replace("/", "%2F")
+          if (platform == "gitlab") project = project.replace(/\//g, "%2F")
           var obj = callPlatform(platform, project, issue, description, labels, weight);
           _post(
             url + project + "/issues",
