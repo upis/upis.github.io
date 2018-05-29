@@ -41,14 +41,14 @@ This input will generate two issues:
 
 YYou can also use "$w " for issue weight (**GitLab ONLY**)
 
-### The space after the character (-, >, # or $w) is fundamental and the **order matters**!! Don't forget!
+### The space after the character (-, >, # or $w) is required and the **order matters**!! Don't forget!
 
 ``` note
-PS.: **Order: -, >, #, $w**. you may not use all the options but need to keep order.
+PS.: **Order: -, >, #, $w**. You may choose not to use all the options but you must respect the order.
 ```
 
 ``` note
-We do not store any of your data! If you want, check the code.
+We do not store any of your data! If you want to, check the code.
 ```
 
 ### Compatibility
