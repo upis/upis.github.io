@@ -20,26 +20,26 @@
 
 ### Use
 
-You will need use our markup style but it's so easy... Well... you will use "- " for issue title, "> " for issue description and "# " for issue labels (multiple labels will be separated by comma). Eg:
+You'll need to use our markup style but it's quite easy... So... use "- " for issue title, "> " for issue description and "# " for issue labels (multiple labels are separated by comma). Eg:
 
 ```
-- As user i want to login on system
-> The user will login with email and password
+- As user I want to log in to the system
+> The user will log in with email and password
 # user,essential
-- As user i want to edit my profile
+- As user I want to edit my profile
 > The user will upload profile picture and update personal data
 # user,essential,file
 ```
 
 This input will generate two issues:
-- As user i want to login on system
-  - The user will login with email and password (description)
+- As user I want to log in to the system
+  - The user will log in with email and password (description)
   - #user #essential (labels)
-- As user i want to edit my profile
+- As user I want to edit my profile
   - The user will upload profile picture and update personal data (description)
   - #user #essential #file (labels)
 
-You can use "$w " for issue weight (**GitLab ONLY**)
+YYou can also use "$w " for issue weight (**GitLab ONLY**)
 
 ### The space after the character (-, >, # or $w) is fundamental and the **order matters**!! Don't forget!
 

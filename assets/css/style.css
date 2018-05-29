@@ -191,7 +191,9 @@
   font-weight: bold; }
 
 #platform {
-  min-height: 31px; }
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none; }
 
 #loader {
   position: fixed;
