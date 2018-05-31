@@ -73,6 +73,9 @@
             (<a id="platform-link" href="https://gitlab.com/profile/personal_access_tokens">Generate Token for <span id="platform-name">GitLab</span></a> or <a href="https://github.com/settings/tokens">Generate Token for GitHub</a>)
           </label>
           <input id="private-token" type="text" name="" value="">
+          <label class="padding-b" for="save-token">
+            <input type="checkbox" id="save-token"> Remember token?
+          </label>
           <label for="content">CONTENT</label>
           <textarea id="content" name="name" rows="22" cols="80"></textarea>
           <button class="btn success full" type="button" name="button" id="generate">submit</button>
@@ -98,6 +101,7 @@
       <script src="assets/js/gt-helper.js" charset="utf-8"></script>
       <script src="assets/js/restful.js" charset="utf-8"></script>
       <script src="assets/js/upis.js" charset="utf-8"></script>
+      <script src="assets/js/local-storage.js" charset="utf-8"></script>
       <script async defer src="https://buttons.github.io/buttons.js"></script>
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100008959-4"></script>
