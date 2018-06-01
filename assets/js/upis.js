@@ -7,8 +7,8 @@ gt("#generate").addEventListener("click", function() {
 
   function toGitLab(project, issue, description, labels, weight) {
     url = "https://gitlab.com/api/v4/projects/"
-    project = project.replace("/", "%2F")
     weight = (weight)? parseInt(weight): null;
+    description = description.replace(/\n/g, "  \n");
     var obj =  {
       "id": project,
       "title": issue,
