@@ -38,6 +38,33 @@
               <p>The space after the character (-, >, # or $w) is required and the <b>order matters</b>!! Don't forget!</p>
               <p>PS.: <b>Order: -, >, #, $w</b>. You may choose not to use all the options but you must respect the order.</p>
             </div>
+            <p>Or you can use a JSON file, like this: </p>
+            <div class="code-block cmd text-left">
+              <pre>
+{
+  "issues" :[
+      {
+          "title": "Issue title",
+          "description": "Lorem Ipsum",
+          "labels" : [
+              "LABEL1",
+              "LABEL2",
+              "LABEL3"
+          ],
+          "weight": 3 //ONLY FOR GitLab
+      },
+      {
+          "title": "As user I want to log in to the system",
+          "description": "The user will log in with email and password",
+          "labels": [
+              "user",
+              "essential"
+          ]
+      }
+  ]
+}
+              </pre>
+            </div>
             <div class="inform info">
               <p>We do not store any of your data! If you want to, check the code.</p>
             </div>
@@ -76,6 +103,8 @@
           <label class="padding-b" for="save-token">
             <input type="checkbox" id="save-token"> Remember token?
           </label>
+          <label for="content">JSON FILE</label>          
+          <input type="file" class="field" name="JSON" id="json_file">
           <label for="content">CONTENT</label>
           <textarea id="content" name="name" rows="22" cols="80"></textarea>
           <button class="btn success full" type="button" name="button" id="generate">submit</button>
