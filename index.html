@@ -1,116 +1,173 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>UpIs - enables you to quickly create GitLab and GitHub issues.</title>
-      <link rel="stylesheet" href="nm/gaintime/css/gaintime.min.css" media ="screen" title="no title">
-      <link rel="stylesheet" href="assets/css/style.css" media ="screen" title="no title">
-      <meta name="description" content="Upis enables you to quickly create GitLab and GitHub issues. Submit multiple issues to your git project! It's quite easy...">
-      <link rel="icon" type="image/png" href="assets/img/u.png">
-    </head>
-    <body>
-      <section class="">
-        <div class="medium center">
-          <div class="">
-            <div class="flex-box" style="align-items: center">
-              <div class="col text-left">
-                <img src="assets/img/upis.png" alt="" style="width: 100px">
-              </div>
-              <div class="col text-right">
-                <a class="github-button" href="https://github.com/upis/upis.github.io" data-icon="octicon-star" data-size="large" aria-label="Star upis/upis.github.io on GitHub">Star</a>
-                <a class="github-button" href="https://github.com/upis/upis.github.io/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork upis/upis.github.io on GitHub">Fork</a>
-                <a class="github-button" href="https://github.com/jprodrigues70" data-size="large" aria-label="Follow @jprodrigues70 on GitHub">Follow @jprodrigues70</a>
-              </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UpIs - enables you to quickly create GitLab and GitHub issues.</title>
+    <link rel="stylesheet" href="nm/gaintime/css/gaintime.min.css" media ="screen" title="no title">
+    <link rel="stylesheet" href="assets/css/style.css" media ="screen" title="no title">
+    <meta name="description" content="Upis enables you to quickly create GitLab and GitHub issues. Submit multiple issues to your git project! It's quite easy...">
+    <link rel="icon" type="image/png" href="assets/img/u.png">
+  </head>
+  <body>
+    <section>
+      <div class="medium center">
+        <div>
+          <div class="flex-box" style="align-items: center">
+            <div class="col text-left">
+              <img src="assets/img/upis.png" alt="" style="width: 100px">
+            </div>
+            <div class="col text-right">
+              <a class="github-button" href="https://github.com/upis/upis.github.io" data-icon="octicon-star" data-size="large" aria-label="Star upis/upis.github.io on GitHub">Star</a>
+              <a class="github-button" href="https://github.com/upis/upis.github.io/fork" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork upis/upis.github.io on GitHub">Fork</a>
+              <a class="github-button" href="https://github.com/jprodrigues70" data-size="large" aria-label="Follow @jprodrigues70 on GitHub">Follow @jprodrigues70</a>
             </div>
           </div>
-          <h1 class="text-center">Submit multiple issues to your GitLab or GitHub project</h1>
-          <p>You'll need to use our markup style but it's quite easy...
-            So... use "- " for issue title, "> " for issue description and "# " for issue labels (multiple labels are separated by comma). Eg:</p>
-            <div class="code-block cmd text-left">
-              <h2>- As user I want to log in to the system</h2>
-              <p>> The user will log in with email and password</p>
-              <p><b># user,essential</b> </p>
-            </div>
-            <p>You can also use "$w " for issue weight (<b>GitLab ONLY</b>)</p>
-            <div class="inform warning">
-              <p>The space after the character (-, >, # or $w) is required and the <b>order matters</b>!! Don't forget!</p>
-              <p>PS.: <b>Order: -, >, #, $w</b>. You may choose not to use all the options but you must respect the order.</p>
-            </div>
-            <div class="inform info">
-              <p>We do not store any of your data! If you want to, check the code.</p>
-            </div>
         </div>
-      </section>
-      <section>
-        <div id="loader" class="hidden">
-          <div  class="la-ball-grid-beat la-dark center la-2x mt-50 ">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <h1 class="text-center">Submit multiple issues to your GitLab or GitHub project</h1>
+        <p>You'll need to use our markup style but it's quite easy...
+          So... use "- " for issue title, "> " for issue description and "# " for issue labels (multiple labels are separated by comma). Eg:</p>
+          <div class="code-block cmd text-left">
+            <h2>- As user I want to log in to the system</h2>
+            <p>> The user will log in with email and password</p>
+            <p><b># user,essential</b> </p>
           </div>
-        </div>
-        <div class="gt-form center medium">
-          <label for="platform">Platform</label>
-          <select class="" name="platform" id="platform">
-            <option selected value="gitlab">GitLab</option>
-            <option value="github">GitHub</option>
-          </select>
-          <label for="project-url">
-            Project URL
-            <small>organization/repo</small>
-          </label>
-          <input id="project-url" type="text" name="project-url" value="">
-          <label for="private-token">
-            API TOKEN
-            (<a id="platform-link" href="https://gitlab.com/profile/personal_access_tokens">Generate Token for <span id="platform-name">GitLab</span></a> or <a href="https://github.com/settings/tokens">Generate Token for GitHub</a>)
-          </label>
-          <input id="private-token" type="text" name="" value="">
-          <label class="padding-b" for="save-token">
-            <input type="checkbox" id="save-token"> Remember token?
-          </label>
-          <label for="content">CONTENT</label>
-          <textarea id="content" name="name" rows="22" cols="80"></textarea>
-          <button class="btn success full" type="button" name="button" id="generate">submit</button>
-        </div>
-      </section>
-      <footer class="dark">
-        <div class="flex-box row center medium">
-          <div class="xs-12 sm-4">
-            <h2>Upis</h2>
-            <p>Designed and built by <a href="https://github.com/jprodrigues70" target="_blank">@jprodrigues70</a></p>
+          <p>You can also use "$w " for issue weight (<b>GitLab ONLY</b>)</p>
+          <div class="inform warning">
+            <p>The space after the character (-, >, # or $w) is required and the <b>order matters</b>!! Don't forget!</p>
+            <p>PS.: <b>Order: -, >, #, $w</b>. You may choose not to use all the options but you must respect the order.</p>
           </div>
-          <div class="xs-12 sm-4">
-            <h2>Contribute</h2>
-            <p><a href="https://github.com/upis/upis.github.io" target="_blank">GitHub</a>!</p>
-          </div>
-          <div class="xs-12 sm-4">
-            <p>This website is made with <a href="https://gaintime.github.io">GainTime Framework</a>.</p>
-            <p>This project is licensed under the <a href="https://choosealicense.com/licenses/gpl-3.0/">GNU General Public License v3.0.</a></p>
-          </div>
-        </div>
-      </footer>
-      <!-- <script type="text/javascript" src="nm/gaintime/js/gaintime.min.js"></script> -->
-      <script src="assets/js/gt-helper.js" charset="utf-8"></script>
-      <script src="assets/js/restful.js" charset="utf-8"></script>
-      <script src="assets/js/upis.js" charset="utf-8"></script>
-      <script src="assets/js/local-storage.js" charset="utf-8"></script>
-      <script async defer src="https://buttons.github.io/buttons.js"></script>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100008959-4"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+          <p>Or you can use a JSON file, <a data-modal="json-file">like this.</a> </p>
 
-        gtag('config', 'UA-100008959-4');
-      </script>
-    </body>
-  </html>
+          <div class="gt-modal">
+            <!-- Aqui você vai atribuir um id ao seu modal -->
+            <div id="json-file" class="modal">
+              <!-- Este botão é responsável por fechar o modal -->
+              <button class="modal-close" type="button">×</button>
+              <div class="modal-body">
+                <!-- Digite o conteúdo do modal aqui -->
+                <div class="code-block cmd text-left">
+                  <pre>
+[
+{
+  "title": "Issue title",
+  "description": "Lorem Ipsum",
+  "labels" : [
+    "LABEL1",
+    "LABEL2",
+    "LABEL3"
+  ],
+  "weight": 3
+},
+{
+  "title": "As user I want to log in to the system",
+  "description": "The user will log in with email and password",
+  "labels": [
+    "user",
+    "essential"
+  ]
+}
+]
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inform info">
+            <p>We do not store any of your data! If you want to, check the code.</p>
+          </div>
+      </div>
+    </section>
+    <section>
+      <h2 class="hidden">Form to submit issues</h2>
+      <div id="loader" class="hidden">
+        <div  class="la-ball-grid-beat la-dark center la-2x mt-50 ">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="gt-form center medium">
+        <label for="platform">Platform</label>
+        <select name="platform" id="platform">
+          <option selected value="gitlab">GitLab</option>
+          <option value="github">GitHub</option>
+        </select>
+        <label for="project-url">
+          Project URL
+          <small>organization/repo</small>
+        </label>
+        <input id="project-url" type="text" name="project-url" value="">
+        <label for="private-token">
+          API TOKEN
+          (<a id="platform-link" href="https://gitlab.com/profile/personal_access_tokens">Generate Token for <span id="platform-name">GitLab</span></a> or <a href="https://github.com/settings/tokens">Generate Token for GitHub</a>)
+        </label>
+        <input id="private-token" type="text" value="">
+        <label class="padding-b" for="save-token">
+          <input type="checkbox" id="save-token"> Remember token?
+        </label>
+        <label for="content">JSON FILE (OPTIONAL)
+          <small>If you'll use a JSON, you don't need to use textarea. If you use that two options, issues will be uploaded assync.</small>
+        </label>
+        <form>
+          <input type="file" class="margin-b" name="JSON" id="json_file" autocomplete="off">
+          <button type="reset" name="button">Remove File</button>
+        </form>
+        <label for="content">CONTENT</label>
+        <textarea id="content" name="name" rows="22" cols="80"></textarea>
+        <button class="btn success full" type="button" name="button" id="generate">submit</button>
+      </div>
+    </section>
+    <footer class="dark">
+      <div class="flex-box row center medium">
+        <div class="xs-12 sm-4">
+          <h2>Upis</h2>
+          <p>Designed and built by <a href="https://github.com/jprodrigues70" target="_blank">@jprodrigues70</a></p>
+        </div>
+        <div class="xs-12 sm-4">
+          <h2>Contribute</h2>
+          <p><a href="https://github.com/upis/upis.github.io" target="_blank">GitHub</a>!</p>
+        </div>
+        <div class="xs-12 sm-4">
+          <p>This website is made with <a href="https://gaintime.github.io">GainTime Framework</a>.</p>
+          <p>This project is licensed under the <a href="https://choosealicense.com/licenses/gpl-3.0/">GNU General Public License v3.0.</a></p>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="nm/gaintime/js/gaintime.min.js"></script>
+    <script src="assets/js/gt-helper.js"></script>
+    <script src="assets/js/restful.js"></script>
+    <script src="assets/js/upis.js"></script>
+    <script src="assets/js/local-storage.js"></script>
+    <script src="assets/js/reader.js"></script>
+    <script type="text/javascript">
+      gt("#generate").addEventListener("click", function() {
+        var project = gt("#project-url").value;
+        var platform = gt("#platform").value;
+        if (platform == "gitlab") project = project.replace(/\//g, "%2F")
+
+        tryReadFile(project, platform);
+        tryReadTextArea(project, platform);
+      })
+    </script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100008959-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-100008959-4');
+    </script>
+  </body>
+</html>
