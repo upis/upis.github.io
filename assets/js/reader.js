@@ -24,6 +24,8 @@ function tryReadFile(project, platform) {
             } else {
               sendIssues(i + 1)
             }
+          } else {
+            alert("Finalizado!");
           }
         }
       }
@@ -71,7 +73,8 @@ function tryReadTextArea(project, platform) {
       } else {
         mountAndSend(issues, i + 1)
       }
-
+    } else {
+      alert("Finalizado!")
     }
   }
 }
