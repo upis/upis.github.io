@@ -39,12 +39,36 @@ This input will generate two issues:
   - The user will upload profile picture and update personal data (description)
   - #user #essential #file (labels)
 
-YYou can also use "$w " for issue weight (**GitLab ONLY**)
+You can also use "$w " for issue weight (**GitLab ONLY**)
 
 ### The space after the character (-, >, # or $w) is required and the **order matters**!! Don't forget!
 
 ``` note
 PS.: **Order: -, >, #, $w**. You may choose not to use all the options but you must respect the order.
+```
+
+Or you can use a JSON file, like this:
+```json
+[
+  {
+    "title": "Issue title",
+    "description": "Lorem Ipsum",
+    "labels" : [
+      "LABEL1",
+      "LABEL2",
+      "LABEL3"
+    ],
+    "weight": 3
+  },
+  {
+    "title": "As user I want to log in to the system",
+    "description": "The user will log in with email and password",
+    "labels": [
+      "user",
+      "essential"
+    ]
+  }
+]
 ```
 
 ``` note
